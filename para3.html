@@ -1,0 +1,203 @@
+<html>
+<head>
+
+
+    <style type="text/css">
+
+
+
+      body{
+          height:1504px;
+          margin:0;
+          padding:0;
+      }
+        ul{
+            margin:0;
+          padding:0;     
+        }
+        ul li{
+            list-style: none;
+            height:600px;
+            overflow:hidden;
+            position:relative;
+        }
+        ul li .nonbackground{
+            list-style: none;
+            overflow:hidden;
+            position:relative;
+        }
+        
+        .parallax-background{
+            height:700px;
+        }
+        .header{
+            background-image:url(cute_little_owl_by_edowlsome-d6y5uxo.jpg);
+            background-size: cover;
+        }
+        .profilepic{
+           background-image:url(cute_little_owl_by_edowlsome-d6y5uxo.jpg);
+            background-size: cover;
+        }
+       
+        
+        ul li .subcontent {
+            position:fixed;
+            height:41px;
+            top:0px;
+            left:0px;
+            color:black;
+            width:100%;
+            z-index: 1;
+            opacity: 0;
+        }
+         ul li .subcontent2 {
+            height:auto;
+            top:auto;
+            left:auto;
+            color:black;
+            width:100%;
+            z-index: 1;
+             opacity:0.8;
+        }
+        #mainnavv ul {
+	list-style-type: none;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	font-size: medium;
+	vertical-align: baseline;
+}
+       #mainnavv a {
+	width: 33.3%;
+	display: inline-block;
+	float: left;
+	text-align: center;
+	text-transform: none;
+	color: #000000;
+	background-color: #909090;
+	clear: none;
+	text-decoration: none;
+	font-size: large;
+}
+        h1{font-size: 10px;}
+      
+    </style>
+
+</head>
+
+<body>
+
+    <ul class="parallax">
+        <li >
+            <div class="parallax-background header">
+            </div>
+            <div class="subcontent">
+                <nav id="mainnavv">
+      <ul>
+       <a href="para3.html" class="thispage">1</a>
+        <a href="para3.html" class="thispage">2</a>
+        <a href="para3.html" class="thispage">3</a>
+      </ul>
+    </nav>
+               
+            </div>
+        </li>  
+        
+        <li >
+
+                <div class="subcontent2">
+                <nav id="mainnavv">
+      <ul>
+       <a href="para3.html" class="thispage">4</a>
+        <a href="para3.html" class="thispage">5</a>
+        <a href="para3.html" class="thispage">6</a>
+      </ul>
+    </nav>
+               
+            </div>
+
+        </li>
+
+    </ul>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+   <script>
+       (function($){
+           
+           var $container =$(".parallax");
+           var $divs = $container.find("div.parallax-background");
+           var thingBeingScrolled=document.body;
+           var liheight=$divs.eq(0).closest("li").height();
+           var diffheight=$divs.eq(0).height()-liheight;
+           
+
+           
+           var i,len,div,li,offset,scroll,top;
+           
+           var render=function(){
+               
+               top = thingBeingScrolled.scrollTop;
+               
+               for(i=0,len=$divs.length;i<len;i++)
+               {
+                   div = $divs[i];
+                   li=div.parentNode;
+                   offset=$(div).offset().top;
+                   scroll=Math.round(((top-offset)/liheight)*diffheight);
+                   div.style.webkitTransform="translate3d(0px,"+scroll+"px,0px)";
+                   
+               }
+               
+           };
+           
+           (function loop(){
+               requestAnimationFrame(loop);
+               render();
+           })();
+           
+       })(jQuery);
+       
+       $(function(){
+    var fadeBegin = 500, 
+    fadeFinish = 800, 
+    fadingElement = $('.subcontent');
+
+$(window).on('scroll', function(){
+    var offset = $(document).scrollTop(), opacity = 0; 
+    console.log(offset);
+    if( offset <= fadeBegin ){
+        opacity = 0; 
+    } else if( offset <= fadeFinish ){
+        opacity = ( offset / fadeFinish)*0.8;
+
+    }
+    fadingElement.stop().animate({opacity: opacity}, 200);
+});
+    
+    });
+       $(function(){
+    var fadeBegin = 500, 
+    fadeFinish = 800, 
+    fadingElement = $('.subcontent2');
+
+$(window).on('scroll', function(){
+    var offset = $(document).scrollTop(), opacity = 0; 
+    console.log(offset);
+    if( offset <= fadeBegin ){
+        opacity = 0.8; 
+    } else if( offset <= fadeFinish ){
+        opacity = 0.8+(offset / fadeFinish)*0.2;
+
+    }
+    fadingElement.stop().animate({opacity: opacity}, 200);
+});
+    
+    });
+    </script> 
+</body>
+
+</html>
