@@ -1,13 +1,48 @@
 <html>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!--To adapt in mobile device-->
 <head>
 
 
     <style type="text/css">
+         
+         @media screen and (min-device-width: 320px) and (max-device-width: 320px){ 
+        body{
+          max-height:1000px; height:1000px;
+          margin:0;
+          padding:0;
+      }
+        
+    }
 
-
+     @media screen and (min-device-width: 372px) and (max-device-width: 400px){ 
+        body{
+          max-height:1250px; height:1200px;
+          margin:0;
+          padding:0;
+      }
+        
+    }
+  
+    @media screen and (min-device-width: 400px) and (max-device-width: 700px){ 
+        body{
+          max-height:1315px; height:1200px;
+          margin:0;
+          padding:0;
+      }
+        
+    }
+        @media screen and (min-device-width: 700px) and (max-device-width: 1024px){ 
+        body{
+          max-height:1350px; height:1200px;
+          margin:0;
+          padding:0;
+      }
+        
+    }
 
       body{
-          height:1504px;
+          max-height:auto; height:1504px;
           margin:0;
           padding:0;
       }
@@ -17,10 +52,11 @@
         }
         ul li{
             list-style: none;
-            height:600px;
+            height:600px;  
             overflow:hidden;
             position:relative;
         }
+      <!--To make difference in pixel for parallax -->
         ul li .nonbackground{
             list-style: none;
             overflow:hidden;
@@ -30,9 +66,10 @@
         .parallax-background{
             height:700px;
         }
+        
         .header{
             background-image:url(cute_little_owl_by_edowlsome-d6y5uxo.jpg);
-            background-size: cover;
+            background-size: 100% 100%;
         }
         .profilepic{
            background-image:url(cute_little_owl_by_edowlsome-d6y5uxo.jpg);
@@ -133,7 +170,7 @@
            var thingBeingScrolled=document.body;
            var liheight=$divs.eq(0).closest("li").height();
            var diffheight=$divs.eq(0).height()-liheight;
-           
+         
 
            
            var i,len,div,li,offset,scroll,top;
@@ -148,12 +185,12 @@
                    li=div.parentNode;
                    offset=$(div).offset().top;
                    scroll=Math.round(((top-offset)/liheight)*diffheight);
-                   div.style.webkitTransform="translate3d(0px,"+scroll+"px,0px)";
+                   div.style.webkitTransform="translate3d(0px,"+scroll*0.5+"px,0px)";
                    
                }
-               
+              
            };
-           
+           //for calculating the amount of scroll
            (function loop(){
                requestAnimationFrame(loop);
                render();
@@ -177,8 +214,9 @@ $(window).on('scroll', function(){
     }
     fadingElement.stop().animate({opacity: opacity}, 200);
 });
-    
+    //for opacity of top nav bar 
     });
+      
        $(function(){
     var fadeBegin = 500, 
     fadeFinish = 800, 
@@ -195,6 +233,7 @@ $(window).on('scroll', function(){
     }
     fadingElement.stop().animate({opacity: opacity}, 200);
 });
+      //for opacity of bottom nav bar    
     
     });
     </script> 
